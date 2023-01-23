@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<div class="px-2 px-lg-5 px-md-5">
+    <h1 class="mb-3 font-weight-bold">Dashboard</h1>
+    {% include 'partials/messages.html' %}
+    <div class="row row-cols-lg-4 row-cols-md-4" id="card-row">
+        {% for api in apis %}
+            <div class="col">
+                <div class="card flex-fill w-100 rounded-lg shadow-sm mb-3">
+                    <div class="card-header bg-transparent border-bottom-0">
+                        <h5 class="card-title text-center mb-0 font-weight-bold">Requests - {{api.registerName}}</h5>
+                    </div>
+                    <div class="card-body py-3 flex-fill">
+                        <div class="row align-items-center mb-2 text-center">
+                            <div class="col-12">
+                                <h3>{{api.limit}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row row-cols-lg-4 row-cols-md-4"> 
+        <div class="col">
+            <div class="card flex-fill w-100 rounded-lg shadow-sm mb-3">
+                <div class="card-body p-5 flex-fill text-center">
+                    <a href="{% url 'ares_index' %}" class="h1 stretched-link text-decoration-none text-black-900">ARES</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card flex-fill w-100 rounded-lg shadow-sm mb-3">
+                <div class="card-body p-5 flex-fill text-center">
+                    <a href="{% url 'res_index' %}" class="h1 stretched-link text-decoration-none text-black-900">RES</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
